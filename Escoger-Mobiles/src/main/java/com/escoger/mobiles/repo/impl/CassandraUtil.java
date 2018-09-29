@@ -1,5 +1,7 @@
 package com.escoger.mobiles.repo.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,17 +16,18 @@ import org.springframework.data.cassandra.core.convert.CassandraConverter;
 import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
 import org.springframework.data.cassandra.core.mapping.BasicCassandraMappingContext;
 import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
+import org.springframework.stereotype.Repository;
 
+import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.escoger.mobiles.beans.AllMobileBean;
 import com.escoger.mobiles.repo.config.AllMobilesRepo;
 import com.escoger.mobiles.services.MobileService;
 import com.escoger.mobiles.services.MobileServiceImpl;
 
-@Configuration
-	@PropertySource(value = { "classpath:cassandra.properties" })
-	public class CassandraUtil {
+@Repository
+	public class CassandraUtil implements AllMobilesRepo{
 
-	@Autowired
-	AllMobilesRepo mobileRepository;
+
 	   /* *//**
 	     * Constant String for Keyspace
 	     *//*
@@ -87,9 +90,24 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	        return cassandraSessionFactoryBean;
 	    }*/
 
+	private final CassandraOperations cassandraTemplate;
+
+	public CassandraUtil(CassandraOperations cassandraTemplate) {
+		this.cassandraTemplate = cassandraTemplate;
+	}
+
+	
 	@Bean
 	public MobileService mobileService(AllMobilesRepo mobileRepository) {
 		return new MobileServiceImpl(mobileRepository);
+	}
+
+	@Override
+	public List<AllMobileBean> getAllMobiles() {
+		// TODO Auto-generated method stub
+		List<AllMobileBean> allMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("users"), AllMobileBean.class);
+		
+		return allMobileList;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package com.escoger.mobiles.repo.impl;
+/*package com.escoger.mobiles.repo.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -55,3 +55,4 @@ public class DbConfiguration {
     }
     
 }
+*/
