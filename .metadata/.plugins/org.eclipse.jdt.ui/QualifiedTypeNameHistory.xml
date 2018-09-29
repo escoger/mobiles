@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.escoger.mobiles.beans.AllMobileBean"/>
+<fullyQualifiedTypeName name="java.util.UUID"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.config.AbstractCassandraConfiguration"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.repository.Query"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.PropertySource"/>
+<fullyQualifiedTypeName name="org.springframework.core.env.Environment"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.config.CassandraClusterFactoryBean"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.core.mapping.CassandraMappingContext"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.core.mapping.BasicCassandraMappingContext"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.core.convert.CassandraConverter"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.core.convert.MappingCassandraConverter"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.config.CassandraSessionFactoryBean"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.config.SchemaAction"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.core.CassandraOperations"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.core.CassandraTemplate"/>
+<fullyQualifiedTypeName name="org.springframework.data.cassandra.repository.CassandraRepository"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.repo.config.AllMobilesRepo"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.services.MobileService"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.services.MobileServiceImpl"/>
+</qualifiedTypeNameHistroy>

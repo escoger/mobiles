@@ -1,0 +1,16 @@
+package com.escoger.mobiles.services;
+
+import java.util.List;
+
+import com.escoger.mobiles.beans.AllMobileBean;
+
+public class MobileServiceImpl implements MobileService{
+
+	@Override
+	public List<AllMobileBean> getAllMobiles() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+
