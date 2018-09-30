@@ -1,7 +1,6 @@
 package com.escoger.mobiles.beans;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
@@ -10,10 +9,9 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("Mobiles")
 public class AllMobileBean implements Serializable{
 	
-	 private static final long serialVersionUID = 1L;
 	 
 	 @PrimaryKey
-	 private UUID id;
+	 private int id;
 	 
 	private String brand ;
 	private String modelNo;
@@ -47,6 +45,12 @@ public class AllMobileBean implements Serializable{
 	}
 	public void setPrice(String price) {
 		this.price = price;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	} 
 	
 	

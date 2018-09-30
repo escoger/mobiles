@@ -18,3 +18,6 @@ spring:
     cassandra:
       keyspace-name: escoger_mobiles
       contact-points: localhost
+  jpa:
+    show-sql: true
+   

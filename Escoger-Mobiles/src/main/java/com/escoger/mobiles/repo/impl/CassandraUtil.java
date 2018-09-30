@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.mobiles.beans.AllMobileBean;
+import com.escoger.mobiles.mi.beans.AllMiMobileBean;
 import com.escoger.mobiles.repo.config.AllMobilesRepo;
 import com.escoger.mobiles.services.MobileService;
 import com.escoger.mobiles.services.MobileServiceImpl;
@@ -101,13 +102,23 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	public MobileService mobileService(AllMobilesRepo mobileRepository) {
 		return new MobileServiceImpl(mobileRepository);
 	}
+	
+	
 
 	@Override
 	public List<AllMobileBean> getAllMobiles() {
 		// TODO Auto-generated method stub
-		List<AllMobileBean> allMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("users"), AllMobileBean.class);
+		List<AllMobileBean> allMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mobiles"), AllMobileBean.class);
 		
 		return allMobileList;
+	}
+
+
+	@Override
+	public List<AllMiMobileBean> getAllMiMobiles() {
+		List<AllMiMobileBean> allMiMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mi_mobiles"), AllMiMobileBean.class);
+		
+		return allMiMobileList;
 	}
 	
 }
