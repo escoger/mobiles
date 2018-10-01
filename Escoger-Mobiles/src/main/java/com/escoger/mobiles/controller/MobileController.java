@@ -25,8 +25,6 @@ public class MobileController {
 		this.mobService = mobService;
 	}
 	
-	
-	
 
 	@GetMapping	("/All")
 	public ResponseEntity<List<AllMobileBean>> getAllMobiles() {

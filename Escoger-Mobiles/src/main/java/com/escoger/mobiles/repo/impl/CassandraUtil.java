@@ -18,6 +18,8 @@ import org.springframework.data.cassandra.core.mapping.BasicCassandraMappingCont
 import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.stereotype.Repository;
 
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.QueryLogger;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.mobiles.beans.AllMobileBean;
 import com.escoger.mobiles.mi.beans.AllMiMobileBean;
@@ -29,6 +31,8 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	public class CassandraUtil implements AllMobilesRepo{
 
 
+	@Autowired
+	Cluster cluster;
 	   /* *//**
 	     * Constant String for Keyspace
 	     *//*
@@ -119,6 +123,14 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		List<AllMiMobileBean> allMiMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mi_mobiles"), AllMiMobileBean.class);
 		
 		return allMiMobileList;
+	}
+	
+	@Bean
+	public QueryLogger queryLogger(Cluster cluster) {
+	    QueryLogger queryLogger = QueryLogger.builder()
+	            .build();
+	    cluster.register(queryLogger);
+	    return queryLogger;
 	}
 	
 }
