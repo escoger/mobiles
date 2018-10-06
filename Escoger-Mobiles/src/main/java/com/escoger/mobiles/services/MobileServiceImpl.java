@@ -54,7 +54,19 @@ public class MobileServiceImpl implements MobileService{
 		return allMobileList;
 	}
 
-		
-	
-}
+	@Override
+	public List<Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networkType) {
+		List<Object> allMobileBrandAndNetworkTypeList = null;
+		Class clazz = null;
+		try {
+			clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("clazz is :" + clazz);
+		allMobileBrandAndNetworkTypeList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnBrandAndNetworkType(brand, networkType ,clazz));
+		return allMobileBrandAndNetworkTypeList;
+	}
 
+}
