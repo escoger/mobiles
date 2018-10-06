@@ -1,21 +1,11 @@
 package com.escoger.mobiles.repo.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-import org.springframework.data.cassandra.config.CassandraClusterFactoryBean;
-import org.springframework.data.cassandra.config.CassandraSessionFactoryBean;
-import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.core.CassandraOperations;
-import org.springframework.data.cassandra.core.CassandraTemplate;
-import org.springframework.data.cassandra.core.convert.CassandraConverter;
-import org.springframework.data.cassandra.core.convert.MappingCassandraConverter;
-import org.springframework.data.cassandra.core.mapping.BasicCassandraMappingContext;
-import org.springframework.data.cassandra.core.mapping.CassandraMappingContext;
 import org.springframework.stereotype.Repository;
 
 import com.datastax.driver.core.Cluster;
@@ -43,12 +33,10 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	    private static final String CONTACTPOINTS = "cassandra.contactpoints";
 	    *//**
 	     * Constant String for Port 
-	     *//*
+	     */
 	    private static final String PORT = "cassandra.port";
 	    
-	    @Autowired
-	    private Environment environment;
-
+/*
 	    public CassandraUtil() {
 	        System.out.println("CassandraUtil()");
 	    }
@@ -118,19 +106,32 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	}
 
 
-	@Override
+	/*@Override
 	public List<AllMiMobileBean> getAllMiMobiles() {
 		List<AllMiMobileBean> allMiMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mi_mobiles"), AllMiMobileBean.class);
 		
 		return allMiMobileList;
-	}
+	}*/
 	
+		
 	@Bean
 	public QueryLogger queryLogger(Cluster cluster) {
 	    QueryLogger queryLogger = QueryLogger.builder()
 	            .build();
 	    cluster.register(queryLogger);
 	    return queryLogger;
+	}
+
+
+	public Collection<? extends Object> getMobilesBasedOnBrand(String brand, Class clazz) {
+		
+		List<Object> mobileList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles"), clazz);
+		
+		System.out.println("mobileList is :"+mobileList);
+		
+		System.out.println("mobile list size is :"+mobileList.size());
+		
+		return mobileList;
 	}
 	
 }
