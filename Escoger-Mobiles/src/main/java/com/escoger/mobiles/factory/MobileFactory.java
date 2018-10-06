@@ -1,6 +1,5 @@
 package com.escoger.mobiles.factory;
 
-import com.escoger.mobiles.mi.beans.AllMiMobileBean;
 
 public  class MobileFactory implements MobileTypeObject{
 
@@ -19,7 +18,7 @@ public  class MobileFactory implements MobileTypeObject{
 
 		}
 		if(brand.equalsIgnoreCase("Mi")) {
-			return new AllMiMobileBean();
+			//return new AllMiMobileBean();
 		}
 		if(brand.equalsIgnoreCase("One plus")) {
 
