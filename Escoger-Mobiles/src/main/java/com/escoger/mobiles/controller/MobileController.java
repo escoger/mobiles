@@ -39,6 +39,10 @@ public class MobileController {
 
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrand(brand), HttpStatus.OK);
 	}
-	
-	
+
+	@GetMapping("mobiles/mobileBrand/{brand}/network/{networktype}")
+	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrandAndNetworkType(@PathVariable String brand, @PathVariable String networktype) {
+		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrandAndNetworkType(brand, networktype), HttpStatus.OK);
+	}
+
 }

@@ -10,5 +10,6 @@ public interface AllMobilesRepo  {
 //	@Query(value = "select * from mobiles")
 	public List<AllMobileBean> getAllMobiles();
 	public Collection<? extends Object> getMobilesBasedOnBrand(String brand, Class clazz);
+	public Collection<? extends Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networkType,Class clazz);
 
 }

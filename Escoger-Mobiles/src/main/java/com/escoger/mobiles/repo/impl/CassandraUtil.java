@@ -136,6 +136,13 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	}
 
 
+	@Override
+	public Collection<? extends Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networkType, Class clazz) {
+		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("networktype", networkType)), clazz);
+		return allMobileBrandAndNetworkTypeList;
+	}
+
+
 	
 	
 }

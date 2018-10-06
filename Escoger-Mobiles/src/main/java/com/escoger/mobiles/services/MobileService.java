@@ -10,6 +10,7 @@ public interface MobileService {
 	
 	public List<AllMobileBean> getAllMobiles();
 	public List<Object> getAllMobilesBasedOnBrand(String brand);
+	public List<Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networktype);
 
 }
 
