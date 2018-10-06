@@ -3,8 +3,8 @@ package com.escoger.mobiles.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.validator.internal.util.logging.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.escoger.mobiles.beans.AllMobileBean;
 import com.escoger.mobiles.repo.config.AllMobilesRepo;
@@ -12,7 +12,7 @@ import com.escoger.mobiles.repo.config.AllMobilesRepo;
 
 
 public class MobileServiceImpl implements MobileService{
-	//Logger logger = LoggerFact
+	private static final Logger logger = LoggerFactory.getLogger(MobileServiceImpl.class);
 
 
 	private final AllMobilesRepo mobileDao;
@@ -25,13 +25,15 @@ public class MobileServiceImpl implements MobileService{
 	
 	@Override
 	public List<AllMobileBean> getAllMobiles() {
-		// TODO Auto-generated method stub
-		Iterable<AllMobileBean> mobileList = mobileDao.getAllMobiles();
-		return (List<AllMobileBean>) mobileList;
+		logger.info("ENTER :List<AllMobileBean> getAllMobiles");
+		 Iterable<AllMobileBean> mobileList = mobileDao.getAllMobiles();
+		 logger.info("EXIT :List<AllMobileBean> getAllMobiles");
+		 return (List<AllMobileBean>) mobileList;
 	}
 
 	@Override
 	public List<Object> getAllMobilesBasedOnBrand(String brand) {
+		logger.info("ENTER :List<Object> getAllMobilesBasedOnBrand(String brand) :"+brand);
 		List<Object> allMobileList = null;
 		Class clazz = null;
 		
@@ -40,16 +42,15 @@ public class MobileServiceImpl implements MobileService{
 		}
 		
 		try {
-			 clazz = Class.forName("com.escoger.mobiles.mi.beans."+brand);
-			 System.out.println("clazz is :"+clazz);
+			 clazz = Class.forName("com.escoger.mobiles.beans."+brand);
+			 logger.debug("getAllMobilesBasedOnBrand - clazz :"+clazz);
 			 allMobileList = new ArrayList<Object>(mobileDao.getMobilesBasedOnBrand(brand,clazz));
 		}
 		
 		catch(Exception e1) {
-			e1.printStackTrace();
+			//e1.printStackTrace();
 		}
-	
-
+		logger.info("EXIT :List<Object> getAllMobilesBasedOnBrand(String brand) :"+brand);
 		return allMobileList;
 	}
 

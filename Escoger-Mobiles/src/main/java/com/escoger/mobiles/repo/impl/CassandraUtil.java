@@ -3,6 +3,8 @@ package com.escoger.mobiles.repo.impl;
 import java.util.Collection;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.cassandra.core.CassandraOperations;
@@ -12,14 +14,13 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.QueryLogger;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.escoger.mobiles.beans.AllMobileBean;
-import com.escoger.mobiles.mi.beans.AllMiMobileBean;
 import com.escoger.mobiles.repo.config.AllMobilesRepo;
 import com.escoger.mobiles.services.MobileService;
 import com.escoger.mobiles.services.MobileServiceImpl;
 
 @Repository
 	public class CassandraUtil implements AllMobilesRepo{
-
+	private static final Logger logger = LoggerFactory.getLogger(CassandraUtil.class);
 
 	@Autowired
 	Cluster cluster;
@@ -127,11 +128,14 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		
 		List<Object> mobileList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles"), clazz);
 		
-		System.out.println("mobileList is :"+mobileList);
+	//	System.out.println("mobileList is :"+mobileList);
 		
-		System.out.println("mobile list size is :"+mobileList.size());
+	//	System.out.println("mobile list size is :"+mobileList.size());
 		
 		return mobileList;
 	}
+
+
+	
 	
 }
