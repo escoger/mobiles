@@ -44,5 +44,25 @@ public class MobileController {
 	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrandAndNetworkType(@PathVariable String brand, @PathVariable String networktype) {
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrandAndNetworkType(brand, networktype), HttpStatus.OK);
 	}
+	//recent launches
+	@GetMapping	("mobiles/mobileBrand/{brand}/recentLaunches/{recentLaunches}")
+	public ResponseEntity<List<Object>> getAllMobilesBrandBasedOOnRecentLaunches(@PathVariable String brand, @PathVariable String recentLaunches) {
+
+		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnRecentLaunches(brand,recentLaunches), HttpStatus.OK);
+	}
+	
+	//basic phones
+		@GetMapping	("mobiles/mobileBrand/{brand}/basicphones{basicphones}")
+		public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnBasicPhones(@PathVariable String brand, @PathVariable String basicphones) {
+
+			return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnBasicPhones(brand,basicphones), HttpStatus.OK);
+		}
+		
+		//dual sim mobiles/mobileBrand/{brand}/dualsimphones
+		@GetMapping	("mobiles/mobileBrand/{brand}/dualsimphones{dualsimphones}")
+		public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnDualSimphones(@PathVariable String brand, @PathVariable String dualsimphones) {
+
+			return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnDualSimphones(brand,dualsimphones), HttpStatus.OK);
+		}
 
 }

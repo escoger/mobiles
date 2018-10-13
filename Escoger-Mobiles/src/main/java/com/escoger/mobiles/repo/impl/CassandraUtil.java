@@ -141,7 +141,28 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("networktype", networkType)), clazz);
 		return allMobileBrandAndNetworkTypeList;
 	}
-
+	
+	public Collection<? extends Object> getAllMobilesBrandBasedOnRecentLaunches(String brand, String recentLaunches, Class clazz) {
+		List<Object> AllMobilesBrandBasedOnRecentLaunchesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",recentLaunches)), clazz);
+				
+				return AllMobilesBrandBasedOnRecentLaunchesList;
+			}
+			
+			@Override
+			public Collection<? extends Object> getAllMobilesBrandBasedOnBasicPhones(String brand, String basicPhones, Class clazz) {
+		List<Object> AllMobilesBrandBasedOnBasicPhonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",basicPhones)), clazz);
+				
+				
+				return AllMobilesBrandBasedOnBasicPhonesList;
+			}
+			
+			public Collection<? extends Object> getAllMobilesBrandBasedOnDualSimphones(String brand, String dualSimphones, Class clazz) {
+				List<Object> AllMobilesBrandBasedOnDualSimphonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",dualSimphones)), clazz);
+						
+						
+						return AllMobilesBrandBasedOnDualSimphonesList;
+					}
+					
 
 	
 	
