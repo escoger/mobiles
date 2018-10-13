@@ -64,5 +64,10 @@ public class MobileController {
 
 			return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnDualSimphones(brand,dualsimphones), HttpStatus.OK);
 		}
+		
+		@GetMapping("mobiles/mobileBrand/{brand}/androidphones")
+	public ResponseEntity<List<Object>> getAllAndroidMobilesBasedOnBrand(@PathVariable String brand) {
+		return new ResponseEntity<List<Object>>(mobService.getAllAndroidMobilesBasedOnBrand(brand), HttpStatus.OK);
+	}
 
 }

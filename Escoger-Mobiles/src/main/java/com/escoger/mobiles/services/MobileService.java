@@ -14,6 +14,6 @@ public interface MobileService {
 	public List<Object> getAllMobilesBrandBasedOnRecentLaunches(String brand, String recentLaunches);
 	public List<Object> getAllMobilesBrandBasedOnBasicPhones(String brand, String basicphones);
 	public List<Object> getAllMobilesBrandBasedOnDualSimphones(String brand, String dualsimphones);
-
+	public List<Object> getAllAndroidMobilesBasedOnBrand(String brand);
 }
 

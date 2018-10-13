@@ -162,7 +162,12 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 						
 						return AllMobilesBrandBasedOnDualSimphonesList;
 					}
-					
+		
+		@Override
+	public Collection<? extends Object> getAllAndriodMobilesBasedOnBrand(String brand, Class clazz) {
+		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("mobileType", "androidmobiles")), clazz);
+		return allMobileBrandAndNetworkTypeList;
+	}			
 
 	
 	
