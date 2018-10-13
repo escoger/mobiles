@@ -141,5 +141,20 @@ public class MobileServiceImpl implements MobileService{
 			return AllMobilesBrandBasedOnDualSimphonesList;
 			
 		}
+		
+		@Override
+	public List<Object> getAllAndroidMobilesBasedOnBrand(String brand) {
+		List<Object> allAndroidMobileBasedOnBrandList = null;
+		Class clazz = null;
+		try {
+			clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("clazz is :" + clazz);
+		allAndroidMobileBasedOnBrandList = new ArrayList<Object>(mobileDao.getAllAndriodMobilesBasedOnBrand(brand,clazz));
+		return allAndroidMobileBasedOnBrandList;
+	}
 
 }
