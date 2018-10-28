@@ -16,7 +16,7 @@ import com.escoger.mobiles.services.MobileService;
 import com.google.common.net.MediaType;
 
 @RestController
-@RequestMapping(path = "/mobiles", consumes = "application/json", produces = "application/json")
+@RequestMapping(path = "/mobiles")//, consumes = "application/json", produces = "application/json")
 public class MobileController {
 	private static final Logger logger = LoggerFactory.getLogger(MobileController.class);
 	MobileService mobService;
@@ -40,8 +40,9 @@ public class MobileController {
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrand(brand), HttpStatus.OK);
 	}
 
-	@GetMapping("mobiles/mobileBrand/{brand}/network/{networktype}")
+	@GetMapping("mobileBrand/{brand}/network/{networktype}")
 	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrandAndNetworkType(@PathVariable String brand, @PathVariable String networktype) {
+		System.out.println("inside mobile controller");
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrandAndNetworkType(brand, networktype), HttpStatus.OK);
 	}
 	//recent launches

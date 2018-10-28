@@ -59,7 +59,7 @@ public class MobileServiceImpl implements MobileService{
 		List<Object> allMobileBrandAndNetworkTypeList = null;
 		Class clazz = null;
 		try {
-			clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+			clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

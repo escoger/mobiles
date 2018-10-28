@@ -1,22 +1,25 @@
 package com.escoger.mobiles.beans;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 
-@Table("Mobiles")
+@Table("mobiles")
 public class AllMobileBean implements Serializable{
 	
 	 
 	 @PrimaryKey
-	 private int id;
+	 private UUID id;
 	 
 	private String brand ;
-	private String modelNo;
-	private String imageUrl;
+	private String model_no;
+	private String image_url;
 	private String price ;
+	private String networktype;
+	private String offer;
 	
 	// offers  / logic of price 
 	
@@ -28,17 +31,36 @@ public class AllMobileBean implements Serializable{
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	public String getModelNo() {
-		return modelNo;
+	
+	public UUID getId() {
+		return id;
 	}
-	public void setModelNo(String modelNo) {
-		this.modelNo = modelNo;
+	public void setId(UUID id) {
+		this.id = id;
 	}
-	public String getImageUrl() {
-		return imageUrl;
+	public String getModel_no() {
+		return model_no;
 	}
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setModel_no(String model_no) {
+		this.model_no = model_no;
+	}
+	public String getImage_url() {
+		return image_url;
+	}
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+	}
+	public String getNetworktype() {
+		return networktype;
+	}
+	public void setNetworktype(String networktype) {
+		this.networktype = networktype;
+	}
+	public String getOffer() {
+		return offer;
+	}
+	public void setOffer(String offer) {
+		this.offer = offer;
 	}
 	public String getPrice() {
 		return price;
@@ -46,12 +68,7 @@ public class AllMobileBean implements Serializable{
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	} 
+	 
 	
 	
 	
