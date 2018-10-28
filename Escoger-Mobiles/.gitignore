@@ -12,7 +12,7 @@ bin/
 .springBeans
 .sts4-cache
 .metadata
-.class
+*.class
 
 ### IntelliJ IDEA ###
 .idea
