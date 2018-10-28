@@ -3,6 +3,8 @@ package com.escoger.mobiles.repo.config;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.data.cassandra.repository.AllowFiltering;
+
 import com.escoger.mobiles.beans.AllMobileBean;
 
 public interface AllMobilesRepo  {

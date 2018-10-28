@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.cassandra.core.CassandraOperations;
+import org.springframework.data.cassandra.repository.AllowFiltering;
 import org.springframework.stereotype.Repository;
 
 import com.datastax.driver.core.Cluster;
@@ -137,8 +138,9 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 
 
 	@Override
+	@AllowFiltering
 	public Collection<? extends Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networkType, Class clazz) {
-		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("networktype", networkType)), clazz);
+		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("mobiles").where(QueryBuilder.eq("networktype", networkType)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
 		return allMobileBrandAndNetworkTypeList;
 	}
 	
