@@ -1,4 +1,0 @@
-spring.data.cassandra.cluster-name=
-spring.data.cassandra.port=9042
-spring.data.cassandra.keyspace-name=Test
-spring.data.cassandra.contact-points=localhost
