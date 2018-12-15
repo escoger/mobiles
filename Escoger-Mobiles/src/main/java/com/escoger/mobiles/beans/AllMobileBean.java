@@ -6,16 +6,15 @@ import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 
-@Table("Mobiles")
+//@Table("Mobiles")
 public class AllMobileBean implements Serializable{
 	
 	 
-	 @PrimaryKey
-	 private int id;
+	
 	 
 	private String brand ;
-	private String modelNo;
-	private String imageUrl;
+	private String model_no;
+	private String image_url;
 	private String price ;
 	
 	// offers  / logic of price 
@@ -28,17 +27,18 @@ public class AllMobileBean implements Serializable{
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	public String getModelNo() {
-		return modelNo;
+	
+	public String getModel_no() {
+		return model_no;
 	}
-	public void setModelNo(String modelNo) {
-		this.modelNo = modelNo;
+	public void setModel_no(String model_no) {
+		this.model_no = model_no;
 	}
-	public String getImageUrl() {
-		return imageUrl;
+	public String getImage_url() {
+		return image_url;
 	}
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
 	}
 	public String getPrice() {
 		return price;
@@ -46,13 +46,13 @@ public class AllMobileBean implements Serializable{
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public int getId() {
+	/*public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	} 
-	
+	*/
 	
 	
 	

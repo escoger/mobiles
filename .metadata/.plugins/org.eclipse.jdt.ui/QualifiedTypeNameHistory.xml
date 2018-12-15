@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.escoger.mobiles.beans.AllMobileBean"/>
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="org.springframework.data.cassandra.config.AbstractCassandraConfiguration"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.springframework.data.cassandra.repository.Query"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.PropertySource"/>
@@ -19,8 +17,23 @@
 <fullyQualifiedTypeName name="org.springframework.data.cassandra.core.CassandraOperations"/>
 <fullyQualifiedTypeName name="org.springframework.data.cassandra.core.CassandraTemplate"/>
 <fullyQualifiedTypeName name="org.springframework.data.cassandra.repository.CassandraRepository"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-<fullyQualifiedTypeName name="com.escoger.mobiles.repo.config.AllMobilesRepo"/>
 <fullyQualifiedTypeName name="com.escoger.mobiles.services.MobileService"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.repo.config.AllMobilesRepo"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.beans.AllMobileBean"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+<fullyQualifiedTypeName name="com.datastax.driver.mapping.annotations.Table"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.mi.services.MiService"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.factory.MobileTypeObject"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.factory.MobileFactory"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.mi.services.MiServiceImpl"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.escoger.mobiles.mi.beans.AllMiMobileBean"/>
 <fullyQualifiedTypeName name="com.escoger.mobiles.services.MobileServiceImpl"/>
+<fullyQualifiedTypeName name="com.datastax.driver.core.Cluster"/>
+<fullyQualifiedTypeName name="com.datastax.driver.core.QueryLogger"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.datastax.driver.mapping.annotations.Column"/>
+<fullyQualifiedTypeName name="com.datastax.driver.core.querybuilder.QueryBuilder"/>
 </qualifiedTypeNameHistroy>

@@ -3,18 +3,25 @@ package com.escoger.mobiles.repo.impl;
 import java.util.Collection;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Repository;
+import org.yaml.snakeyaml.scanner.Constant;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.QueryLogger;
+import com.datastax.driver.core.querybuilder.Clause;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.datastax.driver.core.querybuilder.Select;
+import com.datastax.driver.core.querybuilder.Select.Where;
 import com.escoger.mobiles.beans.AllMobileBean;
 import com.escoger.mobiles.repo.config.AllMobilesRepo;
+import com.escoger.mobiles.request.beans.MobilesOnBrandPriceRangeInputBean;
 import com.escoger.mobiles.services.MobileService;
 import com.escoger.mobiles.services.MobileServiceImpl;
 
@@ -128,14 +135,29 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		
 		List<Object> mobileList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles"), clazz);
 		
-	//	System.out.println("mobileList is :"+mobileList);
-		
-	//	System.out.println("mobile list size is :"+mobileList.size());
-		
 		return mobileList;
 	}
 
 
+	@Override
+	public Collection<? extends Object> getMobilesOnBrandPriceRange(Class<AllMobileBean> mobile,
+			@Valid MobilesOnBrandPriceRangeInputBean inputBean) {
+		// TODO Auto-generated method stub
+		System.out.println("brand in util :"+inputBean.getBrand());
+		Where select = QueryBuilder.select().from("mobiles_by_price_range_brand").where(QueryBuilder.eq("brand", inputBean.getBrand())).and(QueryBuilder.gt("price", inputBean.getMinprice())).and(QueryBuilder.lt("price", inputBean.getMaxprice()));
+		
+		System.out.println("select is :"+select);
+	
+		this.cassandraTemplate.select(select, mobile);
+		List<AllMobileBean> mobileList = this.cassandraTemplate.select(select, mobile);
+		return mobileList;
+	}
+
+/*
+ * //Clause cl2 = QueryBuilder.lt("price", inputBean.getMaxprice());
+ * Mobiles based on price range 
+ * Create table mobiles_by_price_range (min_price text , max_price text , model_no text , image_url text , PRIMARY_KEY(min_price,max_price));
+ */
 	
 	
 }

@@ -1,5 +1,0 @@
-package com.escoger.mobiles.repo.impl;
-
-public class DbConfiguration {
-
-}
