@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.escoger.mobiles.beans.*;
+import com.escoger.mobiles.exceptions.BrandNotFoundException;
 import com.escoger.mobiles.services.MobileService;
 import com.google.common.net.MediaType;
 
@@ -20,23 +21,27 @@ import com.google.common.net.MediaType;
 public class MobileController {
 	private static final Logger logger = LoggerFactory.getLogger(MobileController.class);
 	MobileService mobService;
-	
+
 	@Autowired
-    public MobileController(	MobileService mobService) {
+	public MobileController(	MobileService mobService) {
 		// TODO Auto-generated constructor stub
 		this.mobService = mobService;
 	}
-	
+
 
 	@GetMapping	("/All")
 	public ResponseEntity<List<AllMobileBean>> getAllMobiles() {
 
 		return new ResponseEntity<List<AllMobileBean>>(mobService.getAllMobiles(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping	("/mobileBrand/{brand}")
 	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrand(@PathVariable String brand) {
-
+		List<Object> objectList = mobService.getAllMobilesBasedOnBrand(brand);
+		if(objectList == null) {
+			//throw new BrandNotFoundException("brand - "+brand);
+			// call rest for all the mobiles and reder that on the UI 
+		}
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrand(brand), HttpStatus.OK);
 	}
 
@@ -51,22 +56,22 @@ public class MobileController {
 
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnRecentLaunches(brand,recentLaunches), HttpStatus.OK);
 	}
-	
+
 	//basic phones
-		@GetMapping	("mobiles/mobileBrand/{brand}/basicphones{basicphones}")
-		public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnBasicPhones(@PathVariable String brand, @PathVariable String basicphones) {
+	@GetMapping	("mobiles/mobileBrand/{brand}/basicphones{basicphones}")
+	public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnBasicPhones(@PathVariable String brand, @PathVariable String basicphones) {
 
-			return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnBasicPhones(brand,basicphones), HttpStatus.OK);
-		}
-		
-		//dual sim mobiles/mobileBrand/{brand}/dualsimphones
-		@GetMapping	("mobiles/mobileBrand/{brand}/dualsimphones{dualsimphones}")
-		public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnDualSimphones(@PathVariable String brand, @PathVariable String dualsimphones) {
+		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnBasicPhones(brand,basicphones), HttpStatus.OK);
+	}
 
-			return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnDualSimphones(brand,dualsimphones), HttpStatus.OK);
-		}
-		
-		@GetMapping("mobiles/mobileBrand/{brand}/androidphones")
+	//dual sim mobiles/mobileBrand/{brand}/dualsimphones
+	@GetMapping	("mobiles/mobileBrand/{brand}/dualsimphones{dualsimphones}")
+	public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnDualSimphones(@PathVariable String brand, @PathVariable String dualsimphones) {
+
+		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnDualSimphones(brand,dualsimphones), HttpStatus.OK);
+	}
+
+	@GetMapping("mobiles/mobileBrand/{brand}/androidphones")
 	public ResponseEntity<List<Object>> getAllAndroidMobilesBasedOnBrand(@PathVariable String brand) {
 		return new ResponseEntity<List<Object>>(mobService.getAllAndroidMobilesBasedOnBrand(brand), HttpStatus.OK);
 	}

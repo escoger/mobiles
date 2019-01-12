@@ -20,38 +20,38 @@ import com.escoger.mobiles.services.MobileService;
 import com.escoger.mobiles.services.MobileServiceImpl;
 
 @Repository
-	public class CassandraUtil implements AllMobilesRepo{
+public class CassandraUtil implements AllMobilesRepo{
 	private static final Logger logger = LoggerFactory.getLogger(CassandraUtil.class);
 
 	@Autowired
 	Cluster cluster;
-	   /* *//**
-	     * Constant String for Keyspace
-	     *//*
+	/* *//**
+	 * Constant String for Keyspace
+	 *//*
 	    private static final String KEYSPACE = "cassandra.keyspace";
-	    *//**
-	     * Constant String for ContactPoints
-	     *//*
+	  *//**
+	  * Constant String for ContactPoints
+	  *//*
 	    private static final String CONTACTPOINTS = "cassandra.contactpoints";
-	    *//**
-	     * Constant String for Port 
-	     */
-	    private static final String PORT = "cassandra.port";
-	    
-/*
+	   *//**
+	   * Constant String for Port 
+	   */
+	private static final String PORT = "cassandra.port";
+
+	/*
 	    public CassandraUtil() {
 	        System.out.println("CassandraUtil()");
 	    }
-	    
+
 	    private String getKeyspaceName() {
 	        return environment.getProperty(KEYSPACE);       
 	    }
-	    
+
 	    private String getContactPoints() {
 	        return environment
 	                .getProperty(CONTACTPOINTS);        
 	    }
-	    
+
 	    private int getPortNumber() {
 	        return Integer.parseInt(environment
 	                .getProperty(PORT));        
@@ -91,19 +91,19 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		this.cassandraTemplate = cassandraTemplate;
 	}
 
-	
+
 	@Bean
 	public MobileService mobileService(AllMobilesRepo mobileRepository) {
 		return new MobileServiceImpl(mobileRepository);
 	}
-	
-	
+
+
 
 	@Override
 	public List<AllMobileBean> getAllMobiles() {
 		// TODO Auto-generated method stub
 		List<AllMobileBean> allMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mobiles"), AllMobileBean.class);
-		
+
 		return allMobileList;
 	}
 
@@ -111,28 +111,24 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	/*@Override
 	public List<AllMiMobileBean> getAllMiMobiles() {
 		List<AllMiMobileBean> allMiMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mi_mobiles"), AllMiMobileBean.class);
-		
+
 		return allMiMobileList;
 	}*/
-	
-		
+
+
 	@Bean
 	public QueryLogger queryLogger(Cluster cluster) {
-	    QueryLogger queryLogger = QueryLogger.builder()
-	            .build();
-	    cluster.register(queryLogger);
-	    return queryLogger;
+		QueryLogger queryLogger = QueryLogger.builder()
+				.build();
+		cluster.register(queryLogger);
+		return queryLogger;
 	}
 
 
 	public Collection<? extends Object> getMobilesBasedOnBrand(String brand, Class clazz) {
-		
+
 		List<Object> mobileList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles"), clazz);
-		
-	//	System.out.println("mobileList is :"+mobileList);
-		
-	//	System.out.println("mobile list size is :"+mobileList.size());
-		
+
 		return mobileList;
 	}
 
@@ -143,34 +139,34 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("mobiles").where(QueryBuilder.eq("networktype", networkType)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
 		return allMobileBrandAndNetworkTypeList;
 	}
-	
+
 	public Collection<? extends Object> getAllMobilesBrandBasedOnRecentLaunches(String brand, String recentLaunches, Class clazz) {
 		List<Object> AllMobilesBrandBasedOnRecentLaunchesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",recentLaunches)), clazz);
-				
-				return AllMobilesBrandBasedOnRecentLaunchesList;
-			}
-			
-			@Override
-			public Collection<? extends Object> getAllMobilesBrandBasedOnBasicPhones(String brand, String basicPhones, Class clazz) {
+
+		return AllMobilesBrandBasedOnRecentLaunchesList;
+	}
+
+	@Override
+	public Collection<? extends Object> getAllMobilesBrandBasedOnBasicPhones(String brand, String basicPhones, Class clazz) {
 		List<Object> AllMobilesBrandBasedOnBasicPhonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",basicPhones)), clazz);
-				
-				
-				return AllMobilesBrandBasedOnBasicPhonesList;
-			}
-			
-			public Collection<? extends Object> getAllMobilesBrandBasedOnDualSimphones(String brand, String dualSimphones, Class clazz) {
-				List<Object> AllMobilesBrandBasedOnDualSimphonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",dualSimphones)), clazz);
-						
-						
-						return AllMobilesBrandBasedOnDualSimphonesList;
-					}
-		
-		@Override
+
+
+		return AllMobilesBrandBasedOnBasicPhonesList;
+	}
+
+	public Collection<? extends Object> getAllMobilesBrandBasedOnDualSimphones(String brand, String dualSimphones, Class clazz) {
+		List<Object> AllMobilesBrandBasedOnDualSimphonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",dualSimphones)), clazz);
+
+
+		return AllMobilesBrandBasedOnDualSimphonesList;
+	}
+
+	@Override
 	public Collection<? extends Object> getAllAndriodMobilesBasedOnBrand(String brand, Class clazz) {
 		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("mobileType", "androidmobiles")), clazz);
 		return allMobileBrandAndNetworkTypeList;
 	}			
 
-	
-	
+
+
 }
