@@ -20,6 +20,7 @@ public class AllMobileBean implements Serializable{
 	private String price ;
 	private String networktype;
 	private String offer;
+	private String brands;
 	
 	// offers  / logic of price 
 	
@@ -68,7 +69,19 @@ public class AllMobileBean implements Serializable{
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	 
+	public String getBrands() {
+		return brands;
+	}
+	public void setBrands(String brands) {
+		this.brands = brands;
+	}
+	@Override
+	public String toString() {
+		return "AllMobileBean [id=" + id + ", brand=" + brand + ", model_no=" + model_no + ", image_url=" + image_url
+				+ ", price=" + price + ", networktype=" + networktype + ", offer=" + offer + ", brands=" + brands + "]";
+	}
+	
+	
 	
 	
 	

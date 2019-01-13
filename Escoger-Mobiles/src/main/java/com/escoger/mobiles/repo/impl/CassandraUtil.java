@@ -169,7 +169,155 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	public Collection<? extends Object> getAllAndriodMobilesBasedOnBrand(String brand, Class clazz) {
 		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("mobileType", "androidmobiles")), clazz);
 		return allMobileBrandAndNetworkTypeList;
-	}			
+	}
+
+
+		@Override
+		public Collection<? extends Object> getMobilesBasedOnCamera(String camera, Class clazz) {
+			List<Object> MobilesBasedOnCameraList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Camera", camera)), clazz);
+			
+			
+			return MobilesBasedOnCameraList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getMobilesBasedOnCameraAndBrand(String camera, String brand, Class clazz) {
+			List<Object> MobilesBasedOnCameraAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Camera", camera)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
+			
+			
+			return MobilesBasedOnCameraAndBrandList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getMobilesBasedOnCameraAndBrandAndPrice(String camera, String brand,
+				String price, Class clazz) {
+			List<Object> MobilesBasedOnCameraAndBrandAndPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Camera", camera)).and(QueryBuilder.eq("brand",brand)).and(QueryBuilder.eq("Best Price",price)).allowFiltering(),  clazz);
+			
+			
+			return MobilesBasedOnCameraAndBrandAndPriceList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getMobilesBasedOnBrandAndOffers(String brand, String offers, Class clazz) {
+			List<Object> MobilesBasedOnBrandAndOffersList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_OFFERS").where(QueryBuilder.eq("brand",brand)), clazz);
+			
+			
+			return MobilesBasedOnBrandAndOffersList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getMobilesBasedOnOffers(String offers, Class clazz) {
+			List<Object> MobilesBasedOnOffersList = this.cassandraTemplate.select(QueryBuilder.select("*").from("MOB_OFFERS"), clazz);
+			
+			
+			return MobilesBasedOnOffersList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnRamAndBrand(String ram, String brand, Class clazz) {
+			List<Object> AllMobilesBasedOnRamAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_RAM").where(QueryBuilder.eq("Ram", ram)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
+			
+			
+			return AllMobilesBasedOnRamAndBrandList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnOsTypeAndBrand(String osType, String brand,
+				Class clazz) {
+			List<Object> AllMobilesBasedOnOsTypeAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_OS_TYPE").where(QueryBuilder.eq("OSType", osType)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
+			
+			
+			return AllMobilesBasedOnOsTypeAndBrandList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnOsType(String osType, Class clazz) {
+			List<Object> AllMobilesBasedOnOsTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_OS_TYPE").where(QueryBuilder.eq("OSType",osType)), clazz);
+			
+			
+			return AllMobilesBasedOnOsTypeList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnRecentLaunchesAndBrand(String recentLaunches,
+				String brand, Class clazz) {
+			List<Object> AllMobilesBasedOnRecentLaunchesAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_RECENT_LAUNCH").where(QueryBuilder.eq("brand",brand)), clazz);
+			
+			
+			return AllMobilesBasedOnRecentLaunchesAndBrandList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnRecentLaunches(String brand, Class clazz) {
+			List<Object> AllMobilesBasedOnRecentLaunchesList = this.cassandraTemplate.select(QueryBuilder.select("*").from("MOB_RECENT_LAUNCH"), clazz);
+			
+			
+			return AllMobilesBasedOnRecentLaunchesList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnNetworkTypeAndBrandAndPrice(String networktype,
+				String brand, String price, Class clazz) {
+			List<Object> AllMobilesBasedOnNetworkTypeAndBrandAndPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Network_Type", networktype)).and(QueryBuilder.eq("brand",brand)).and(QueryBuilder.eq("Best Price",price)).allowFiltering(), clazz);
+			
+			
+			return AllMobilesBasedOnNetworkTypeAndBrandAndPriceList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnNetworkType(String networktype, Class clazz) {
+			List<Object> AllMobilesBasedOnNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Network_Type",networktype)), clazz);
+			
+			
+			return AllMobilesBasedOnNetworkTypeList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnPriceAndBrand(String price, String brand, Class clazz) {
+			List<Object> AllMobilesBasedOnPriceAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES_PRICE").where(QueryBuilder.eq("Best Price", price)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
+			
+			
+			return AllMobilesBasedOnPriceAndBrandList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnPrice(String price, Class clazz) {
+			List<Object> AllMobilesBasedOnPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES_PRICE").where(QueryBuilder.eq("Best Price",price)), clazz);
+			
+			
+			return AllMobilesBasedOnPriceList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getAllMobilesBasedOnBrands(String brands, Class clazz) {
+               List<Object> AllMobilesBasedOnBrandsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES").where(QueryBuilder.eq("brand ",brands)), clazz);
+			
+			
+			return AllMobilesBasedOnBrandsList;
+		}
+
+
+		@Override
+		public Collection<? extends Object> getMobileDetails(String model_no, Class clazz) {
+			List<Object> AllMobileDetailsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_DETAILS").where(QueryBuilder.eq("Model No",model_no)), clazz);
+			
+			
+			return AllMobileDetailsList;
+		}			
 
 	
 	
