@@ -140,26 +140,26 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	@Override
 	@AllowFiltering
 	public Collection<? extends Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networkType, Class clazz) {
-		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("mobiles").where(QueryBuilder.eq("networktype", networkType)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
+		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("mobiles").where(QueryBuilder.eq("network_type", networkType)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
 		return allMobileBrandAndNetworkTypeList;
 	}
 	
 	public Collection<? extends Object> getAllMobilesBrandBasedOnRecentLaunches(String brand, String recentLaunches, Class clazz) {
-		List<Object> AllMobilesBrandBasedOnRecentLaunchesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",recentLaunches)), clazz);
+		List<Object> AllMobilesBrandBasedOnRecentLaunchesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recent_Launches",recentLaunches)), clazz);
 				
 				return AllMobilesBrandBasedOnRecentLaunchesList;
 			}
 			
 			@Override
 			public Collection<? extends Object> getAllMobilesBrandBasedOnBasicPhones(String brand, String basicPhones, Class clazz) {
-		List<Object> AllMobilesBrandBasedOnBasicPhonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",basicPhones)), clazz);
+		List<Object> AllMobilesBrandBasedOnBasicPhonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recent_Launches",basicPhones)), clazz);
 				
 				
 				return AllMobilesBrandBasedOnBasicPhonesList;
 			}
 			
 			public Collection<? extends Object> getAllMobilesBrandBasedOnDualSimphones(String brand, String dualSimphones, Class clazz) {
-				List<Object> AllMobilesBrandBasedOnDualSimphonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recentLaunches",dualSimphones)), clazz);
+				List<Object> AllMobilesBrandBasedOnDualSimphonesList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("recent_Launches",dualSimphones)), clazz);
 						
 						
 						return AllMobilesBrandBasedOnDualSimphonesList;
@@ -167,7 +167,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		
 		@Override
 	public Collection<? extends Object> getAllAndriodMobilesBasedOnBrand(String brand, Class clazz) {
-		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("mobileType", "androidmobiles")), clazz);
+		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("mobile_Type", "androidmobiles")), clazz);
 		return allMobileBrandAndNetworkTypeList;
 	}
 
@@ -193,7 +193,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		@Override
 		public Collection<? extends Object> getMobilesBasedOnCameraAndBrandAndPrice(String camera, String brand,
 				String price, Class clazz) {
-			List<Object> MobilesBasedOnCameraAndBrandAndPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Camera", camera)).and(QueryBuilder.eq("brand",brand)).and(QueryBuilder.eq("Best Price",price)).allowFiltering(),  clazz);
+			List<Object> MobilesBasedOnCameraAndBrandAndPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Camera", camera)).and(QueryBuilder.eq("brand",brand)).and(QueryBuilder.eq("Best_Price",price)).allowFiltering(),  clazz);
 			
 			
 			return MobilesBasedOnCameraAndBrandAndPriceList;
@@ -230,7 +230,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		@Override
 		public Collection<? extends Object> getAllMobilesBasedOnOsTypeAndBrand(String osType, String brand,
 				Class clazz) {
-			List<Object> AllMobilesBasedOnOsTypeAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_OS_TYPE").where(QueryBuilder.eq("OSType", osType)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
+			List<Object> AllMobilesBasedOnOsTypeAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_OS_TYPE").where(QueryBuilder.eq("OS_Type", osType)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
 			
 			
 			return AllMobilesBasedOnOsTypeAndBrandList;
@@ -239,7 +239,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 
 		@Override
 		public Collection<? extends Object> getAllMobilesBasedOnOsType(String osType, Class clazz) {
-			List<Object> AllMobilesBasedOnOsTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_OS_TYPE").where(QueryBuilder.eq("OSType",osType)), clazz);
+			List<Object> AllMobilesBasedOnOsTypeList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_OS_TYPE").where(QueryBuilder.eq("OS_Type",osType)), clazz);
 			
 			
 			return AllMobilesBasedOnOsTypeList;
@@ -268,7 +268,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		@Override
 		public Collection<? extends Object> getAllMobilesBasedOnNetworkTypeAndBrandAndPrice(String networktype,
 				String brand, String price, Class clazz) {
-			List<Object> AllMobilesBasedOnNetworkTypeAndBrandAndPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Network_Type", networktype)).and(QueryBuilder.eq("brand",brand)).and(QueryBuilder.eq("Best Price",price)).allowFiltering(), clazz);
+			List<Object> AllMobilesBasedOnNetworkTypeAndBrandAndPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_CAM_BRAND_PR").where(QueryBuilder.eq("Network_Type", networktype)).and(QueryBuilder.eq("brand",brand)).and(QueryBuilder.eq("Best_Price",price)).allowFiltering(), clazz);
 			
 			
 			return AllMobilesBasedOnNetworkTypeAndBrandAndPriceList;
@@ -286,7 +286,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 
 		@Override
 		public Collection<? extends Object> getAllMobilesBasedOnPriceAndBrand(String price, String brand, Class clazz) {
-			List<Object> AllMobilesBasedOnPriceAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES_PRICE").where(QueryBuilder.eq("Best Price", price)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
+			List<Object> AllMobilesBasedOnPriceAndBrandList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES_PRICE").where(QueryBuilder.eq("Best_Price", price)).and(QueryBuilder.eq("brand",brand)).allowFiltering(), clazz);
 			
 			
 			return AllMobilesBasedOnPriceAndBrandList;
@@ -295,7 +295,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 
 		@Override
 		public Collection<? extends Object> getAllMobilesBasedOnPrice(String price, Class clazz) {
-			List<Object> AllMobilesBasedOnPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES_PRICE").where(QueryBuilder.eq("Best Price",price)), clazz);
+			List<Object> AllMobilesBasedOnPriceList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES_PRICE").where(QueryBuilder.eq("Best_Price",price)), clazz);
 			
 			
 			return AllMobilesBasedOnPriceList;
@@ -304,7 +304,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 
 		@Override
 		public Collection<? extends Object> getAllMobilesBasedOnBrands(String brands, Class clazz) {
-               List<Object> AllMobilesBasedOnBrandsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES").where(QueryBuilder.eq("brand ",brands)), clazz);
+               List<Object> AllMobilesBasedOnBrandsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOBILES").where(QueryBuilder.eq("brand",brands)), clazz);
 			
 			
 			return AllMobilesBasedOnBrandsList;
@@ -313,7 +313,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 
 		@Override
 		public Collection<? extends Object> getMobileDetails(String model_no, Class clazz) {
-			List<Object> AllMobileDetailsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_DETAILS").where(QueryBuilder.eq("Model No",model_no)), clazz);
+			List<Object> AllMobileDetailsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_DETAILS").where(QueryBuilder.eq("model_no",model_no)), clazz);
 			
 			
 			return AllMobileDetailsList;

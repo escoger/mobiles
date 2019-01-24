@@ -392,7 +392,7 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			MobileDetailsList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnBrands(model_no,clazz));
+			MobileDetailsList = new ArrayList<Object>(mobileDao.getMobileDetails(model_no,clazz));
 			return MobileDetailsList;
 		}
 
