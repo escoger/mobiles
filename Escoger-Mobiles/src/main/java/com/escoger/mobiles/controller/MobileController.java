@@ -36,7 +36,11 @@ public class MobileController {
 	
 	@GetMapping	("mobiles/mobileBrand/{brand}")
 	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrand(@PathVariable String brand) {
-
+		List<Object> objectList = mobService.getAllMobilesBasedOnBrand(brand);
+		if(objectList == null) {
+			//throw new BrandNotFoundException("brand - "+brand);
+			// call rest for all the mobiles and reder that on the UI 
+		}
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrand(brand), HttpStatus.OK);
 	}
 	
