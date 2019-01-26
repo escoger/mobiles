@@ -10,6 +10,9 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("mobiles")
 public class AllMobileBean implements Serializable{
 	
+	 
+	
+	 
 	private String brand;
 	private String model_number;
 	private String model_Name;
