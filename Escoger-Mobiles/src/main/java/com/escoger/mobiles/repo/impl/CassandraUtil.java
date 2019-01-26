@@ -20,25 +20,25 @@ import com.escoger.mobiles.services.MobileService;
 import com.escoger.mobiles.services.MobileServiceImpl;
 
 @Repository
-	public class CassandraUtil implements AllMobilesRepo{
+public class CassandraUtil implements AllMobilesRepo{
 	private static final Logger logger = LoggerFactory.getLogger(CassandraUtil.class);
 
 	@Autowired
 	Cluster cluster;
-	   /* *//**
-	     * Constant String for Keyspace
-	     *//*
+	/* *//**
+	 * Constant String for Keyspace
+	 *//*
 	    private static final String KEYSPACE = "cassandra.keyspace";
-	    *//**
-	     * Constant String for ContactPoints
-	     *//*
+	  *//**
+	  * Constant String for ContactPoints
+	  *//*
 	    private static final String CONTACTPOINTS = "cassandra.contactpoints";
-	    *//**
-	     * Constant String for Port 
-	     */
-	    private static final String PORT = "cassandra.port";
-	    
-/*
+	   *//**
+	   * Constant String for Port 
+	   */
+	private static final String PORT = "cassandra.port";
+
+	/*
 	    public CassandraUtil() {
 	        System.out.println("CassandraUtil()");
 	    }
@@ -91,19 +91,19 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 		this.cassandraTemplate = cassandraTemplate;
 	}
 
-	
+
 	@Bean
 	public MobileService mobileService(AllMobilesRepo mobileRepository) {
 		return new MobileServiceImpl(mobileRepository);
 	}
-	
-	
+
+
 
 	@Override
 	public List<AllMobileBean> getAllMobiles() {
 		// TODO Auto-generated method stub
 		List<AllMobileBean> allMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mobiles"), AllMobileBean.class);
-		
+
 		return allMobileList;
 	}
 
@@ -111,17 +111,17 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	/*@Override
 	public List<AllMiMobileBean> getAllMiMobiles() {
 		List<AllMiMobileBean> allMiMobileList = this.cassandraTemplate.select(QueryBuilder.select().from("mi_mobiles"), AllMiMobileBean.class);
-		
+
 		return allMiMobileList;
 	}*/
-	
-		
+
+
 	@Bean
 	public QueryLogger queryLogger(Cluster cluster) {
-	    QueryLogger queryLogger = QueryLogger.builder()
-	            .build();
-	    cluster.register(queryLogger);
-	    return queryLogger;
+		QueryLogger queryLogger = QueryLogger.builder()
+				.build();
+		cluster.register(queryLogger);
+		return queryLogger;
 	}
 
 
@@ -169,7 +169,7 @@ import com.escoger.mobiles.services.MobileServiceImpl;
 	public Collection<? extends Object> getAllAndriodMobilesBasedOnBrand(String brand, Class clazz) {
 		List<AllMobileBean> allMobileBrandAndNetworkTypeList = this.cassandraTemplate.select(QueryBuilder.select().from(brand+"_mobiles").where(QueryBuilder.eq("mobile_Type", "androidmobiles")), clazz);
 		return allMobileBrandAndNetworkTypeList;
-	}
+	}			
 
 
 		@Override
