@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.escoger.mobiles.beans.*;
-import com.escoger.mobiles.exceptions.BrandNotFoundException;
+
+import com.escoger.mobiles.beans.AllMobileBean;
 import com.escoger.mobiles.services.MobileService;
-import com.google.common.net.MediaType;
 
 @RestController
 @RequestMapping(path = "/mobiles")//, consumes = "application/json", produces = "application/json")
@@ -34,8 +33,8 @@ public class MobileController {
 
 		return new ResponseEntity<List<AllMobileBean>>(mobService.getAllMobiles(), HttpStatus.OK);
 	}
-
-	@GetMapping	("/mobileBrand/{brand}")
+	
+	@GetMapping	("mobiles/mobileBrand/{brand}")
 	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrand(@PathVariable String brand) {
 		List<Object> objectList = mobService.getAllMobilesBasedOnBrand(brand);
 		if(objectList == null) {
@@ -61,9 +60,10 @@ public class MobileController {
 		System.out.println("inside mobile controller");
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnPriceAndBrand(price, brand), HttpStatus.OK);
 	}
-
-	@GetMapping("mobileBrand/{brand}/network/{networktype}")
-	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrandAndNetworkType(@PathVariable String brand, @PathVariable String networktype) {
+	
+   //brand and network type
+	@GetMapping("mobiles/network/{networktype}/mobileBrand/{brand}")
+	public ResponseEntity<List<Object>> getAllMobilesBasedOnNetworkTypeAndBrand(@PathVariable String networktype,@PathVariable String brand) {
 		System.out.println("inside mobile controller");
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrandAndNetworkType(brand, networktype), HttpStatus.OK);
 	}
@@ -95,9 +95,9 @@ public class MobileController {
 	
 	//recent launches and brand
 	@GetMapping	("mobiles/mobileBrand/{brand}/recentLaunches/{recentLaunches}")
-	public ResponseEntity<List<Object>> getAllMobilesBrandBasedOOnRecentLaunches(@PathVariable String brand, @PathVariable String recentLaunches) {
+	public ResponseEntity<List<Object>> getAllMobilesBrandBasedOOnRecentLaunches(@PathVariable String recentLaunches,@PathVariable String brand) {
 
-		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnRecentLaunches(brand,recentLaunches), HttpStatus.OK);
+		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnRecentLaunchesAndBrand(recentLaunches,brand), HttpStatus.OK);
 	}
 
 	//basic phones
