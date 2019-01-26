@@ -42,16 +42,16 @@ public class CassandraUtil implements AllMobilesRepo{
 	    public CassandraUtil() {
 	        System.out.println("CassandraUtil()");
 	    }
-
+	    
 	    private String getKeyspaceName() {
 	        return environment.getProperty(KEYSPACE);       
 	    }
-
+	    
 	    private String getContactPoints() {
 	        return environment
 	                .getProperty(CONTACTPOINTS);        
 	    }
-
+	    
 	    private int getPortNumber() {
 	        return Integer.parseInt(environment
 	                .getProperty(PORT));        
