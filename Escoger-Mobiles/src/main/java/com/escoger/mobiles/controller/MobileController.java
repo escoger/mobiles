@@ -20,13 +20,13 @@ import com.escoger.mobiles.services.MobileService;
 public class MobileController {
 	private static final Logger logger = LoggerFactory.getLogger(MobileController.class);
 	MobileService mobService;
-
+	
 	@Autowired
-	public MobileController(	MobileService mobService) {
+    public MobileController(MobileService mobService) {
 		// TODO Auto-generated constructor stub
 		this.mobService = mobService;
 	}
-
+	
 
 	@GetMapping	("/All")
 	public ResponseEntity<List<AllMobileBean>> getAllMobiles() {
@@ -43,6 +43,7 @@ public class MobileController {
 		}
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnBrand(brand), HttpStatus.OK);
 	}
+	
 	@GetMapping	("mobiles/mobileBrands/{brands}")
 	public ResponseEntity<List<Object>> getAllMobilesBasedOnBrands(@PathVariable String brands) {
 
@@ -99,17 +100,17 @@ public class MobileController {
 
 		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBasedOnRecentLaunchesAndBrand(recentLaunches,brand), HttpStatus.OK);
 	}
-
+	
 	//basic phones
-	@GetMapping	("mobiles/mobileBrand/{brand}/basicphones{basicphones}")
-	public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnBasicPhones(@PathVariable String brand, @PathVariable String basicphones) {
+		@GetMapping	("mobiles/mobileBrand/{brand}/basicphones{basicphones}")
+		public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnBasicPhones(@PathVariable String brand, @PathVariable String basicphones) {
 
-		return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnBasicPhones(brand,basicphones), HttpStatus.OK);
-	}
-
-	//dual sim mobiles/mobileBrand/{brand}/dualsimphones
-	@GetMapping	("mobiles/mobileBrand/{brand}/dualsimphones{dualsimphones}")
-	public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnDualSimphones(@PathVariable String brand, @PathVariable String dualsimphones) {
+			return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnBasicPhones(brand,basicphones), HttpStatus.OK);
+		}
+		
+		//dual sim mobiles/mobileBrand/{brand}/dualsimphones
+		@GetMapping	("mobiles/mobileBrand/{brand}/dualsimphones{dualsimphones}")
+		public ResponseEntity<List<Object>> getAllMobilesBrandBasedOnDualSimphones(@PathVariable String brand, @PathVariable String dualsimphones) {
 
 			return new ResponseEntity<List<Object>>(mobService.getAllMobilesBrandBasedOnDualSimphones(brand,dualsimphones), HttpStatus.OK);
 		}
