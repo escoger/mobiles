@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.escoger.mobiles.beans.*;
+
+import com.escoger.mobiles.beans.AllMobileBean;
 import com.escoger.mobiles.services.MobileService;
-import com.google.common.net.MediaType;
 
 @RestController
 @RequestMapping(path = "/mobiles")//, consumes = "application/json", produces = "application/json")

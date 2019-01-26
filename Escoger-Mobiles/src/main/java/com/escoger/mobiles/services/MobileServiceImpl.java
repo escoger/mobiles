@@ -42,8 +42,7 @@ public class MobileServiceImpl implements MobileService{
 		}
 		
 		try {
-			 clazz = Class.forName("com.escoger.mobiles.beans."+brand);
-			 logger.debug("getAllMobilesBasedOnBrand - clazz :"+clazz);
+			 clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			 allMobileList = new ArrayList<Object>(mobileDao.getMobilesBasedOnBrand(brand,clazz));
 		}
 		
@@ -79,7 +78,7 @@ public class MobileServiceImpl implements MobileService{
 		}
 		
 		try {
-			 clazz = Class.forName("com.escoger.mobiles.mi.beans."+brand);
+			 clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			 System.out.println("clazz is :"+clazz);
 			 AllMobilesBrandBasedOnRecentLaunchesList = new ArrayList<Object>(mobileDao.getAllMobilesBrandBasedOnRecentLaunches(brand,recentLaunches,clazz));
 		}
@@ -106,7 +105,7 @@ public class MobileServiceImpl implements MobileService{
 			}
 			
 			try {
-				 clazz = Class.forName("com.escoger.mobiles.beans."+brand);
+				 clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 				 System.out.println("clazz is :"+clazz);
 				 AllMobilesBrandBasedOnBasicPhonesList = new ArrayList<Object>(mobileDao.getAllMobilesBrandBasedOnBasicPhones(brand,basicPhones,clazz));
 			}
@@ -129,7 +128,7 @@ public class MobileServiceImpl implements MobileService{
 			}
 			
 			try {
-				 clazz = Class.forName("com.escoger.mobiles.beans."+brand);
+				 clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 				 System.out.println("clazz is :"+clazz);
 				 AllMobilesBrandBasedOnDualSimphonesList = new ArrayList<Object>(mobileDao.getAllMobilesBrandBasedOnDualSimphones(brand,DualSimphones,clazz));
 			}
@@ -147,7 +146,7 @@ public class MobileServiceImpl implements MobileService{
 		List<Object> allAndroidMobileBasedOnBrandList = null;
 		Class clazz = null;
 		try {
-			clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+			clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -162,7 +161,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnCameraList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + camera);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -177,7 +176,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnCameraAndBrandList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -192,7 +191,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnCameraAndBrandAndPriceList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -207,7 +206,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnBrandAndOffersList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -222,7 +221,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnOffersList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + offers);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -237,7 +236,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnRamAndBrandList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -252,7 +251,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnOsTypeAndBrandList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -267,7 +266,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnOsTypeList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + osType);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -282,7 +281,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnRecentLaunchesAndBrandList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -297,7 +296,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnRecentLaunchesList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + recentLaunches);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -312,7 +311,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnNetworkTypeAndBrandAndPriceList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -327,7 +326,7 @@ public class MobileServiceImpl implements MobileService{
 			 List<Object> allMobilesBasedOnNetworkTypeList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + networktype);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -342,7 +341,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnPriceAndBrandList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brand);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -357,7 +356,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnPriceList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + price);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -372,7 +371,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> allMobilesBasedOnBrandsList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + brands);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -387,7 +386,7 @@ public class MobileServiceImpl implements MobileService{
 			List<Object> MobileDetailsList = null;
 			Class clazz = null;
 			try {
-				clazz = Class.forName("com.escoger.mobiles.beans" + model_no);
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
