@@ -7,7 +7,7 @@ import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 
-@Table("mobiles")
+//@Table("mobiles")
 public class AllMobileBean implements Serializable{
 	
 	 
