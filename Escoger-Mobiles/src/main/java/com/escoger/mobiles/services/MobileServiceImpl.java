@@ -382,7 +382,7 @@ public class MobileServiceImpl implements MobileService{
 		}
 
 		@Override
-		public List<Object> getMobileDetails(String model_no) {
+		public List<Object> getMobileDetails(String model_number) {
 			List<Object> MobileDetailsList = null;
 			Class clazz = null;
 			try {
@@ -391,7 +391,7 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			MobileDetailsList = new ArrayList<Object>(mobileDao.getMobileDetails(model_no,clazz));
+			MobileDetailsList = new ArrayList<Object>(mobileDao.getMobileDetails(model_number,clazz));
 			return MobileDetailsList;
 		}
 
