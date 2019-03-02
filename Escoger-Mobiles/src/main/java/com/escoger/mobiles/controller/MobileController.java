@@ -19,7 +19,7 @@ import com.escoger.mobiles.services.MobileService;
 
 @RestController
 @RequestMapping(path = "/mobiles")//, consumes = "application/json", produces = "application/json")
-@CrossOrigin(origins = "http://18.219.194.106:4200")
+@CrossOrigin(origins = {"http://18.219.194.106:4200" , "ec2-18-219-194-106.us-east-2.compute.amazonaws.com:4200"})
 public class MobileController {
 	private static final Logger logger = LoggerFactory.getLogger(MobileController.class);
 	MobileService mobService;
