@@ -1,7 +1,7 @@
 application:
   name: spring-boot-cassandra-datastax
 server:
-  port: 8089
+  port: 8088
 # context-path: /student-api
 # Following are Cassandra Configuration
 #cassandra:
