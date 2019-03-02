@@ -43,7 +43,7 @@ public class MobileServiceImpl implements MobileService{
 		
 		try {
 			 clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
-			 allMobileList = new ArrayList<Object>(mobileDao.getMobilesBasedOnBrand(brand,clazz));
+			 allMobileList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnBrand(brand,clazz));
 		}
 		
 		catch(Exception e1) {
@@ -54,7 +54,7 @@ public class MobileServiceImpl implements MobileService{
 	}
 
 	@Override
-	public List<Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networkType) {
+	public List<Object> getAllMobilesBasedOnNetworkTypeAndBrand(String networkType, String brand) {
 		List<Object> allMobileBrandAndNetworkTypeList = null;
 		Class clazz = null;
 		try {
@@ -64,7 +64,7 @@ public class MobileServiceImpl implements MobileService{
 			e.printStackTrace();
 		}
 		System.out.println("clazz is :" + clazz);
-		allMobileBrandAndNetworkTypeList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnBrandAndNetworkType(brand, networkType ,clazz));
+		allMobileBrandAndNetworkTypeList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnNetworkTypeAndBrand(networkType, brand ,clazz));
 		return allMobileBrandAndNetworkTypeList;
 	}
 	
@@ -107,7 +107,7 @@ public class MobileServiceImpl implements MobileService{
 			try {
 				 clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 				 System.out.println("clazz is :"+clazz);
-				 AllMobilesBrandBasedOnBasicPhonesList = new ArrayList<Object>(mobileDao.getAllMobilesBrandBasedOnBasicPhones(brand,basicPhones,clazz));
+				 AllMobilesBrandBasedOnBasicPhonesList = new ArrayList<Object>(mobileDao.getAllMobilesBrandBasedOnBasicPhones(brand,clazz));
 			}
 			
 			catch(Exception e1) {
@@ -130,7 +130,7 @@ public class MobileServiceImpl implements MobileService{
 			try {
 				 clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
 				 System.out.println("clazz is :"+clazz);
-				 AllMobilesBrandBasedOnDualSimphonesList = new ArrayList<Object>(mobileDao.getAllMobilesBrandBasedOnDualSimphones(brand,DualSimphones,clazz));
+				 AllMobilesBrandBasedOnDualSimphonesList = new ArrayList<Object>(mobileDao.getAllMobilesBrandBasedOnDualSimphones(brand,clazz));
 			}
 			
 			catch(Exception e1) {
@@ -202,7 +202,7 @@ public class MobileServiceImpl implements MobileService{
 		}
 
 		@Override
-		public List<Object> getMobilesBasedOnBrandAndOffers(String brand, String offers) {
+		public List<Object> getMobilesBasedOnBrandAndOffers(String brand) {
 			List<Object> allMobilesBasedOnBrandAndOffersList = null;
 			Class clazz = null;
 			try {
@@ -212,12 +212,12 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			allMobilesBasedOnBrandAndOffersList = new ArrayList<Object>(mobileDao.getMobilesBasedOnBrandAndOffers(brand,offers,clazz));
+			allMobilesBasedOnBrandAndOffersList = new ArrayList<Object>(mobileDao.getMobilesBasedOnBrandAndOffers(brand,clazz));
 			return allMobilesBasedOnBrandAndOffersList;
 		}
 
 		@Override
-		public List<Object> getMobilesBasedOnOffers(String offers) {
+		public List<Object> getMobilesBasedOnOffers() {
 			List<Object> allMobilesBasedOnOffersList = null;
 			Class clazz = null;
 			try {
@@ -227,7 +227,7 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			allMobilesBasedOnOffersList = new ArrayList<Object>(mobileDao.getMobilesBasedOnOffers(offers,clazz));
+			allMobilesBasedOnOffersList = new ArrayList<Object>(mobileDao.getMobilesBasedOnOffers(clazz));
 			return allMobilesBasedOnOffersList;
 		}
 
@@ -245,6 +245,22 @@ public class MobileServiceImpl implements MobileService{
 			allMobilesBasedOnRamAndBrandList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnRamAndBrand(ram,brand,clazz));
 			return allMobilesBasedOnRamAndBrandList;
 		}
+		
+		@Override
+		public List<Object> getAllMobilesBasedOnRam(String ram) {
+			List<Object> allMobilesBasedOnRamAndBrandList = null;
+			Class clazz = null;
+			try {
+				clazz = Class.forName("com.escoger.mobiles.beans.AllMobileBean");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("clazz is :" + clazz);
+			allMobilesBasedOnRamAndBrandList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnRam(ram,clazz));
+			return allMobilesBasedOnRamAndBrandList;
+		}
+		
 
 		@Override
 		public List<Object> getAllMobilesBasedOnOsTypeAndBrand(String osType, String brand) {
@@ -277,7 +293,7 @@ public class MobileServiceImpl implements MobileService{
 		}
 
 		@Override
-		public List<Object> getAllMobilesBasedOnRecentLaunchesAndBrand(String recentLaunches, String brand) {
+		public List<Object> getAllMobilesBasedOnRecentLaunchesAndBrand(String brand) {
 			List<Object> allMobilesBasedOnRecentLaunchesAndBrandList = null;
 			Class clazz = null;
 			try {
@@ -287,12 +303,12 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			allMobilesBasedOnRecentLaunchesAndBrandList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnRecentLaunchesAndBrand(recentLaunches,brand,clazz));
+			allMobilesBasedOnRecentLaunchesAndBrandList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnRecentLaunchesAndBrand(brand,clazz));
 			return allMobilesBasedOnRecentLaunchesAndBrandList;
 		}
 
 		@Override
-		public List<Object> getAllMobilesBasedOnRecentLaunches(String recentLaunches) {
+		public List<Object> getAllMobilesBasedOnRecentLaunches() {
 			List<Object> allMobilesBasedOnRecentLaunchesList = null;
 			Class clazz = null;
 			try {
@@ -302,7 +318,7 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			allMobilesBasedOnRecentLaunchesList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnRecentLaunches(recentLaunches,clazz));
+			allMobilesBasedOnRecentLaunchesList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnRecentLaunches(clazz));
 			return allMobilesBasedOnRecentLaunchesList;
 		}
 
@@ -332,7 +348,7 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			allMobilesBasedOnNetworkTypeList = new ArrayList<Object>(mobileDao.getAllAndriodMobilesBasedOnBrand(networktype,clazz));
+			allMobilesBasedOnNetworkTypeList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnNetworkType(networktype,clazz));
 			return allMobilesBasedOnNetworkTypeList;
 		}
 
@@ -362,7 +378,7 @@ public class MobileServiceImpl implements MobileService{
 				e.printStackTrace();
 			}
 			System.out.println("clazz is :" + clazz);
-			allMobilesBasedOnPriceList = new ArrayList<Object>(mobileDao.getAllAndriodMobilesBasedOnBrand(price,clazz));
+			allMobilesBasedOnPriceList = new ArrayList<Object>(mobileDao.getAllMobilesBasedOnPrice(price,clazz));
 			return allMobilesBasedOnPriceList;
 		}
 

@@ -10,7 +10,7 @@ public interface MobileService {
 
 	public List<Object> getAllMobilesBasedOnBrand(String brand);
 
-	public List<Object> getAllMobilesBasedOnBrandAndNetworkType(String brand, String networktype);
+	public List<Object>  getAllMobilesBasedOnNetworkTypeAndBrand(String networkType, String brand);
 
 	public List<Object> getAllMobilesBrandBasedOnRecentLaunches(String brand, String recentLaunches);
 
@@ -26,9 +26,9 @@ public interface MobileService {
 
 	public List<Object> getMobilesBasedOnCameraAndBrandAndPrice(String camera, String brand, String price);
 
-	public List<Object> getMobilesBasedOnBrandAndOffers(String brand, String offers);
+	public List<Object> getMobilesBasedOnBrandAndOffers(String brand);
 
-	public List<Object> getMobilesBasedOnOffers(String offers);
+	public List<Object> getMobilesBasedOnOffers();
 
 	public List<Object> getAllMobilesBasedOnRamAndBrand(String ram, String brand);
 
@@ -36,9 +36,9 @@ public interface MobileService {
 
 	public List<Object> getAllMobilesBasedOnOsType(String osType);
 
-	public List<Object> getAllMobilesBasedOnRecentLaunchesAndBrand(String recentLaunches, String brand);
+	public List<Object> getAllMobilesBasedOnRecentLaunchesAndBrand(String brand);
 
-	public List<Object> getAllMobilesBasedOnRecentLaunches(String recentLaunches);
+	public List<Object> getAllMobilesBasedOnRecentLaunches();
 
 	public List<Object> getAllMobilesBasedOnNetworkTypeAndBrandAndPrice(String networktype, String brand, String price);
 
@@ -51,5 +51,8 @@ public interface MobileService {
 	public List<Object> getAllMobilesBasedOnBrands(String brands);
 
 	public List<Object> getMobileDetails(String model);
+
+	public List<Object> getAllMobilesBasedOnRam(String ram);
+
 	
 }
