@@ -328,9 +328,12 @@ public class CassandraUtil implements AllMobilesRepo{
 
 
 		@Override
-		public Collection<? extends Object> getMobileDetails(String model_no, Class clazz) {
-			List<Object> AllMobileDetailsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_DETAILS").where(QueryBuilder.eq("model_no",model_no)), clazz);
-			System.out.println("AllMobileDetailsList : "+AllMobileDetailsList);
+
+		
+
+		public Collection<? extends Object> getMobileDetails(String model_number, Class clazz) {
+			List<Object> AllMobileDetailsList = this.cassandraTemplate.select(QueryBuilder.select().from("MOB_DETAILS").where(QueryBuilder.eq("model_number",model_number)), clazz);
+
 			
 			return AllMobileDetailsList;
 		}			

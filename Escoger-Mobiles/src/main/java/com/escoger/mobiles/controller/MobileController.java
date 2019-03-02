@@ -19,7 +19,7 @@ import com.escoger.mobiles.services.MobileService;
 
 @RestController
 @RequestMapping(path = "/mobiles")//, consumes = "application/json", produces = "application/json")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://18.219.194.106:4200")
 public class MobileController {
 	private static final Logger logger = LoggerFactory.getLogger(MobileController.class);
 	MobileService mobService;
@@ -192,9 +192,9 @@ public class MobileController {
 		return new ResponseEntity<List<Object>>(mobService.getAllAndroidMobilesBasedOnBrand(brand), HttpStatus.OK);
 	}
 	  
-	  @GetMapping("/mobiledetails/{model_no}")
-	  public ResponseEntity<List<Object>> getMobileDetails(@PathVariable String model_no) {
-		return new ResponseEntity<List<Object>>(mobService.getMobileDetails(model_no), HttpStatus.OK);
+	  @GetMapping("mobiledetails/{model_number}")
+	  public ResponseEntity<List<Object>> getMobileDetails(@PathVariable String model_number) {
+		return new ResponseEntity<List<Object>>(mobService.getMobileDetails(model_number), HttpStatus.OK);
 	}
 
 }
